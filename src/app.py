@@ -18,6 +18,11 @@ def add_new_todo():
     todos.append(decoded_object)
     return flask.jsonify(todos)
 
+@app.route('/todos/<int:position>', methods=['DELETE'])
+def delete_todo(position):
+    todos.pop(position)
+    return flask.jsonify(todos)
+
 # These two lines should always be at the end of your app.py file.
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=3245, debug=True)
